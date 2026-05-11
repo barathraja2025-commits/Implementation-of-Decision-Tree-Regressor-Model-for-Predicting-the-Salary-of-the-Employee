@@ -8,22 +8,83 @@ To write a program to implement the Decision Tree Regressor Model for Predicting
 2. Anaconda – Python 3.7 Installation / Jupyter notebook
 
 ## Algorithm
-1. 
-2. 
-3. 
-4. 
+1. Import the standard libraries.
+2. Upload the dataset and check for any null values using .isnull() function.
+3. Import LabelEncoder and encode the dataset.
+4. Import DecisionTreeRegressor from sklearn and apply the model on the dataset.
+4. Predict the values of arrays.
+5. Import metrics from sklearn and calculate the MSE and R2 of the model on the dataset.
+6. Predict the values of array.
+7. Apply to new unknown values.
 
 ## Program:
 ```
 /*
 Program to implement the Decision Tree Regressor Model for Predicting the Salary of the Employee.
-Developed by: 
-RegisterNumber:  
+Developed by: BARATH R
+RegisterNumber:  212225240022
+
+
+
+import pandas as pd
+data=pd.read_csv("Salary.csv")
+
+data.head()
+
+data.info()
+
+data.isnull().sum()
+
+from sklearn.preprocessing import LabelEncoder
+le=LabelEncoder()
+data["Position"]=le.fit_transform(data["Position"])
+data.head()
+
+x=data[["Position", "Level"]]
+y=data["Salary"]
+
+from sklearn.model_selection import train_test_split
+x_train,x_test,y_train, y_test=train_test_split(x, y, test_size=0.2, random_state=2)
+
+from sklearn.tree import DecisionTreeRegressor
+dt=DecisionTreeRegressor()
+dt.fit(x_train, y_train)
+y_pred=dt.predict(x_test)
+
+from sklearn import metrics
+mse=metrics.mean_squared_error(y_test,y_pred)
+mse
+
+r2=metrics.r2_score(y_test,y_pred)
+r2
+
+dt.predict([[5,6]])
 */
 ```
 
 ## Output:
-![Decision Tree Regressor Model for Predicting the Salary of the Employee](sam.png)
+
+## HEAD:
+<img width="467" height="286" alt="image" src="https://github.com/user-attachments/assets/9e70381f-d90f-4664-8678-0bb36cfc30ce" />
+
+
+## MSE:
+
+<img width="256" height="36" alt="image" src="https://github.com/user-attachments/assets/6061f924-0ecd-47d4-a15f-31fa5b2fe1d3" />
+
+## R2:
+
+<img width="341" height="32" alt="image" src="https://github.com/user-attachments/assets/9f98a5b4-a111-4009-a5b3-358686989d58" />
+
+## PREDICTED:
+
+<img width="320" height="37" alt="image" src="https://github.com/user-attachments/assets/eba174c4-59e6-46f9-bbbe-6a2243302385" />
+
+
+
+
+
+
 
 
 ## Result:
